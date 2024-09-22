@@ -28,6 +28,6 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: us-east-1 # Use your S3 region here
+          AWS_REGION: ${{ secrets.AWS_REGION }} # Use your S3 region here
         run: |
-          aws s3 sync . s3://your-bucket-name --exclude ".git/*" --exclude ".github/*" --delete
+          aws s3 sync . s3://dp-code-base --exclude ".git/*" --exclude ".github/*" --delete
