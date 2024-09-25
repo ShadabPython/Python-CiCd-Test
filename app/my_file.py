@@ -1,1 +1,1 @@
-print("Hello 6")
+print("Hello N1")
