@@ -22,6 +22,7 @@ jobs:
       - name: build
         run: |
           yarn
+          yarn add -D vite
           yarn run build
 
       # Merge ./dist into the 'gh-pages' branch (dist in this case)
