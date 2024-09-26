@@ -11,19 +11,16 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
 
-      # Note: This is *only* for the very next step, it is not required by
-      # git-restore-mtime-action.
-      - name: setup node
-        uses: actions/setup-node@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          node-version: "latest"
+          python-version: "3.10"
 
-      # Run the build script which populates the ./dist folder
-      - name: build
+      - name: Install AWS CLI
         run: |
-          yarn
-          yarn run build
-
+          sudo apt-get update
+          sudo apt-get install -y python3-pip
+          pip3 install awscli --upgrade
       # Merge ./dist into the 'gh-pages' branch (dist in this case)
       - name: update dist branch
         uses: peaceiris/actions-gh-pages@v2.3.1
