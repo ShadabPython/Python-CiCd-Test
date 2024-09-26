@@ -54,8 +54,6 @@ jobs:
         uses: jakejarvis/s3-sync-action@2fb81a9e9fea11e078587911c27754e42e6a6e88
         with:
           args: --exclude '.git*/*' --delete --follow-symlinks
-          bucket: ${{ secrets.AWS_S3_BUCKET }} # Specify your S3 bucket name here
-          region: ${{ secrets.AWS_REGION }}
         env:
           SOURCE_DIR: './'
           AWS_REGION: ${{ secrets.AWS_REGION }}
