@@ -57,7 +57,7 @@ jobs:
           bucket: ${{ secrets.AWS_S3_BUCKET }} # Specify your S3 bucket name here
           region: ${{ secrets.AWS_REGION }}
         env:
-          SOURCE_DIR: "./"
+          SOURCE_DIR: './'
           AWS_REGION: ${{ secrets.AWS_REGION }}
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
