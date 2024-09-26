@@ -1,0 +1,38 @@
+name: Upload changed files to S3
+
+on:
+  push:
+    branches:
+      - main # or your branch name
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Install git-restore-mtime and AWS CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git-restore-mtime python3-pip
+          pip3 install awscli --upgrade
+
+      - name: Restore file modification times
+        run: |
+          git restore-mtime
+
+      - name: Sync modified files to S3
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }} # If necessary
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+        run: |
+          aws s3 sync . s3://your-bucket-name --exclude ".git/*" --exclude ".github/*" --exact-timestamps
