@@ -31,7 +31,7 @@ jobs:
         env:
           PERSONAL_TOKEN: ${{ secrets.ACCESS_TOKEN_REPO }}
           PUBLISH_BRANCH: dist
-          PUBLISH_DIR: ./dist
+          PUBLISH_DIR: ./my-vue-app/dist
 
       # Check out the new branch
       - name: checkout dist
