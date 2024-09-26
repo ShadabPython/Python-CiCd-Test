@@ -25,7 +25,7 @@ jobs:
       - name: update dist branch
         uses: peaceiris/actions-gh-pages@v2.3.1
         env:
-          PERSONAL_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          PERSONAL_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
           PUBLISH_BRANCH: dist
           PUBLISH_DIR: ./dist
 
