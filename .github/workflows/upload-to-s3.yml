@@ -30,5 +30,5 @@ jobs:
       #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       #     AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
       #     AWS_REGION: ${{ secrets.AWS_REGION }} # Use your S3 region here
-      #run: |
-      #  aws s3 sync . s3://dp-codebase-dev/Python-CiCd-Test --exclude ".git/*" --exclude ".github/*" --size-only
+      #   run: |
+      #       aws s3 sync . s3://dp-codebase-dev/Python-CiCd-Test --exclude ".git/*" --exclude ".github/*" --size-only

@@ -48,16 +48,11 @@ jobs:
         uses: chetan/git-restore-mtime-action@v2
         #step-security/git-restore-mtime-action@v2
         # chetan/git-restore-mtime-action@v2
-
-      # Upload to S3
-      - name: sync s3
-        uses: jakejarvis/s3-sync-action@master
-        with:
-          args: --exclude '.git*/*' --delete --follow-symlinks
+      - name: Sync files to S3
         env:
-          SOURCE_DIR: './'
-          AWS_REGION: ${{ secrets.AWS_REGION }}
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
+          AWS_REGION: ${{ secrets.AWS_REGION }} # Use your S3 region here
+        run: |
+          aws s3 sync . s3://dp-codebase-dev/Python-CiCd-Test --exclude ".git/*" --exclude ".github/*" --size-only
