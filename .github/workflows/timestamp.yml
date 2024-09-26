@@ -35,4 +35,4 @@ jobs:
           AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }} # If necessary
           AWS_REGION: ${{ secrets.AWS_REGION }}
         run: |
-          aws s3 sync . s3://your-bucket-name --exclude ".git/*" --exclude ".github/*" --exact-timestamps
+          aws s3 sync . s3://dp-codebase-dev/Python-CiCd-Test2 --exclude ".git/*" --exclude ".github/*" --exact-timestamps
